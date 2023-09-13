@@ -8,6 +8,11 @@ fn main() {
         .lines()
         .map(|line| {
 
+            if !line.is_ascii() {
+                panic!("Invalid characters at: {}", line);
+
+            }
+
             let bytes = line.as_bytes();
             let dup = find_duplicate_on_second_half( bytes );
 
