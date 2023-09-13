@@ -7,8 +7,8 @@ impl Pair {
 
   pub fn new( l: char, r: char  ) -> Pair {
     Pair {
-      left:  get_value(l),
-      right: get_value(r)
+      left:  l as u8 - b'A' + 1,
+      right: r as u8 - b'X' + 1
     }
   }
 
@@ -22,7 +22,7 @@ impl Pair {
 
   pub fn result ( &self ) -> u8 {
 
-    print!("{} - {}", self.left, self.right);
+    println!("Pair: {} - {}", self.left, self.right);
     
     if self.won() {
       return self.right + 6;
@@ -34,16 +34,4 @@ impl Pair {
 
     self.right
   }
-}
-
-pub fn get_value ( letter: char  ) -> u8 {
-
-  match letter {
-    'X' | 'A' => 1,
-    'Y' | 'B' => 2,
-    'Z' | 'C' => 3,
-
-    _ => 0
-  }
-
 }
